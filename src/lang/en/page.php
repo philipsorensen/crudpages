@@ -4,6 +4,7 @@ return [
 	'actions' => 'Actions',
 	'active' => 'Active',
 	'create' => 'Create page',
+	'createanewpage' => 'Create a new page',
 	'delete' => 'Delete page',
 	'deleteaffirmation' => 'Are you sure you want to delete the page titled &ldquo; :name &rdquo;?',
 	'description' => 'Description',

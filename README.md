@@ -28,18 +28,6 @@ PhilipSorensen\CrudPages\Providers\CrudPagesProvider::class
 
 > php artisan vendor:publish --tag=crudpages-assets
 
-Add these routes to the end of your `routes/web.php` (end because they are wildcard routes).
-
-```
-use PhilipSorensen\CrudPages\Controllers\PageController;
-
-Route::controller(PageController::class)->name('page.')->group(function () {
-	Route::get('{slug}', 'show')->name('show');
-	Route::get('{slug1}/{slug2}', 'show2');
-	Route::get('{slug1}/{slug2}/{slug3}', 'show3');
-});
-```
-
 ## Usage
 
 > ???
