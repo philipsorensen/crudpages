@@ -1,17 +1,17 @@
 @extends('layout.app')
-@section('meta_title', 'Pages')
+@section('meta_title', trans('crudpages::page.pages'))
 
 @section('content')
-<h1>Pages</h1>
+<h1>{{ trans('crudpages::page.pages') }}</h1>
 <x-crudpages::status />
 
 <table class="table table-hover table-list">
 	<thead>
-		<td>URL</td>
-		<td>Title</td>
-		<td>Description</td>
-		<td>Active</td>
-		<td class="text-center" colspan="2">Actions</td>
+		<td>{{ trans('crudpages::page.slug') }}</td>
+		<td>{{ trans('crudpages::page.title') }}</td>
+		<td>{{ trans('crudpages::page.description') }}</td>
+		<td>{{ trans('crudpages::page.active') }}</td>
+		<td class="text-center" colspan="2">{{ trans('crudpages::page.actions') }}</td>
 	</thead>
 	@if ($pages->isNotEmpty())
 		@foreach ($pages as $page)
@@ -29,12 +29,12 @@
 					</a>
 				</td>
 				<td class="text-center">
-					<a class="me-4" href="{{ route('crudpages.edit', ['id' => $page->id]) }}" title="Edit page">
+					<a class="me-4" href="{{ route('crudpages.edit', ['id' => $page->id]) }}" title="{{ trans('crudpages::page.edit') }}">
 						<x-iconcomponents::pencil-square />
 					</a>
 				</td>
 				<td class="text-center">
-					<a class="text-danger" href="{{ route('crudpages.delete', ['id' => $page->id]) }}" onclick="return confirm('Are you sure you want to delete the page titled &ldquo;{{ $page->title }}&rdquo;?')"  title="Delete page">
+					<a class="text-danger" href="{{ route('crudpages.delete', ['id' => $page->id]) }}" onclick="return confirm('{{ trans('crudpages::page.deleteaffirmation', ['name' => $page->title]) }}')"  title="{{ trans('crudpages::page.delete') }}">
 						<x-iconcomponents::trash color="red" />
 					</a>
 				</td>
@@ -42,7 +42,7 @@
 		@endforeach
 	@else
 		<tr>
-			<td class="text-center" colspan="6">No pages yet.</td>
+			<td class="text-center" colspan="6">{{ trans('crudpages::page.nopagesyet') }}.</td>
 		</tr>
 	@endif
 </table>
