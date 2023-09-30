@@ -7,13 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use PhilipSorensen\CrudPages\Models\CrudPage;
 
-class CrudPagesController extends Controller
+class AdminCrudPageController extends Controller
 {
-	public function __construct()
-	{
-		//$this->middleware('auth');
-	}
-
     public function create()
     {
         return view('crudpages::create');
@@ -25,7 +20,7 @@ class CrudPagesController extends Controller
         $page->delete();
 
         session()->flash('success', 'Side slettet.');
-        return redirect()->route('crudpages.index');
+        return redirect()->route('admin.crudpages.index');
     }
 
     public function edit(int $id)
@@ -59,7 +54,7 @@ class CrudPagesController extends Controller
         ]);
 
         session()->flash('success', 'Side oprettet.');
-        return redirect()->route('crudpages.index');
+        return redirect()->route('admin.crudpages.index');
     }
 
     public function toggleActive(int $id)
@@ -69,7 +64,7 @@ class CrudPagesController extends Controller
         $page->save();
 
         session()->flash('success', 'Side opdateret.');
-        return redirect()->route('crudpages.index');
+        return redirect()->route('admin.crudpages.index');
     }
 
 	public function update(int $id, Request $request)
@@ -95,6 +90,6 @@ class CrudPagesController extends Controller
         $page->save();
 
         session()->flash('success', 'Side opdateret.');
-        return redirect()->route('crudpages.index');
+        return redirect()->route('admin.crudpages.index');
     }
 }

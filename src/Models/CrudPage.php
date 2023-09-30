@@ -8,4 +8,9 @@ class CrudPage extends Model
 {
 	protected $guarded = [];
 	protected $table = 'crud_pages';
+
+	public function getText()
+	{
+		return $this->text;
+	}
 }

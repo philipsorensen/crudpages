@@ -1,4 +1,4 @@
-<form action="@if (isset($page)) {{ route('crudpages.edit', ['id' => $page->id]) }} @else {{ route('crudpages.create') }} @endif" method="post">
+<form action="@if (isset($page)) {{ route('admin.crudpages.edit', ['id' => $page->id]) }} @else {{ route('admin.crudpages.create') }} @endif" method="post">
 	@csrf
 
 	<div class="row">

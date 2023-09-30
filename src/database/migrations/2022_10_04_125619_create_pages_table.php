@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('crud_pages', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
+			$table->string('ogimage')->nullable();
             $table->boolean('active')->default(false);
             $table->string('title')->nullable();
             $table->string('description')->nullable();

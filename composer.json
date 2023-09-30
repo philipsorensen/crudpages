@@ -16,6 +16,7 @@
 	"license": "MIT",
     "minimum-stability": "stable",
     "require": {
-		"philipsorensen/formcomponents": "^1.0"
+		"philipsorensen/formcomponents": "^1.0",
+		"philipsorensen/iconcomponents": "^1.0"
 	}
 }
