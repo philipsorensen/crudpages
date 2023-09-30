@@ -47,5 +47,5 @@
 	@endif
 </table>
 
-<a href="{{ route('admin.crudpages.create') }}"><button class="btn btn-success mt-4">Create a new page</button></a>
+<a href="{{ route('admin.crudpages.create') }}"><button class="btn btn-success mt-4">{{ trans('crudpages::page.createanewpage') }}</button></a>
 @endsection

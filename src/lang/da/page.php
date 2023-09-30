@@ -4,6 +4,7 @@ return [
 	'actions' => 'Handlinger',
 	'active' => 'Aktiv',
 	'create' => 'Opret side',
+	'createanewpage' => 'Opret en ny side',
 	'delete' => 'Slet side',
 	'deleteaffirmation' => 'Er du sikker på, du vil slette siden med titlen &ldquo; :name &rdquo;?',
 	'description' => 'Beskrivelse',
