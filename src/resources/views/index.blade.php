@@ -20,7 +20,7 @@
 				<td>{{ $page->title }}</td>
 				<td>{{ $page->description }}</td>
 				<td>
-					<a href="{{ route('crudpages.toggle', ['id' => $page->id]) }}">
+					<a href="{{ route('admin.crudpages.toggle', ['id' => $page->id]) }}">
 						@if ($page->active)
 							<x-iconcomponents::check-circle color="green" />
 						@else
@@ -29,12 +29,12 @@
 					</a>
 				</td>
 				<td class="text-center">
-					<a class="me-4" href="{{ route('crudpages.edit', ['id' => $page->id]) }}" title="{{ trans('crudpages::page.edit') }}">
+					<a class="me-4" href="{{ route('crudpages.edit', ['id' => $page->id]) }}" title="{{ trans('admin.crudpages::page.edit') }}">
 						<x-iconcomponents::pencil-square />
 					</a>
 				</td>
 				<td class="text-center">
-					<a class="text-danger" href="{{ route('crudpages.delete', ['id' => $page->id]) }}" onclick="return confirm('{{ trans('crudpages::page.deleteaffirmation', ['name' => $page->title]) }}')"  title="{{ trans('crudpages::page.delete') }}">
+					<a class="text-danger" href="{{ route('admin.crudpages.delete', ['id' => $page->id]) }}" onclick="return confirm('{{ trans('crudpages::page.deleteaffirmation', ['name' => $page->title]) }}')"  title="{{ trans('crudpages::page.delete') }}">
 						<x-iconcomponents::trash color="red" />
 					</a>
 				</td>
@@ -47,5 +47,5 @@
 	@endif
 </table>
 
-<a href="{{ route('crudpages.create') }}"><button class="btn btn-success mt-4">Create a new page</button></a>
+<a href="{{ route('admin.crudpages.create') }}"><button class="btn btn-success mt-4">Create a new page</button></a>
 @endsection
