@@ -10,7 +10,7 @@
 
 		<x-formcomponents::button>
 			@if (isset($page))
-				{{ $trans('crudpages::page.update') }}
+				{{ trans('crudpages::page.update') }}
 			@else
 				{{ trans('crudpages::page.create') }}
 			@endif
