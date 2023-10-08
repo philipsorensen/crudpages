@@ -19,7 +19,7 @@ class AdminCrudPageController extends Controller
         $page = CrudPage::findOrFail($id);
         $page->delete();
 
-        session()->flash('success', 'Side slettet.');
+        session()->flash('success', trans('crudpages::page.deleted') .'.');
         return redirect()->route('admin.crudpages.index');
     }
 
@@ -53,7 +53,7 @@ class AdminCrudPageController extends Controller
             'text' => $validated['text'],
         ]);
 
-        session()->flash('success', 'Side oprettet.');
+        session()->flash('success', trans('crudpages::page.created') . '.');
         return redirect()->route('admin.crudpages.index');
     }
 
@@ -63,7 +63,7 @@ class AdminCrudPageController extends Controller
         $page->active = !$page->active;
         $page->save();
 
-        session()->flash('success', 'Side opdateret.');
+        session()->flash('success', trans('crudpages::page.updated') . '.');
         return redirect()->route('admin.crudpages.index');
     }
 
@@ -89,7 +89,7 @@ class AdminCrudPageController extends Controller
         $page->text = $validated['text'];
         $page->save();
 
-        session()->flash('success', 'Side opdateret.');
+        session()->flash('success', trans('crudpages::page.updated') . '.');
         return redirect()->route('admin.crudpages.index');
     }
 }

@@ -10,7 +10,7 @@
 		<td>{{ trans('crudpages::page.slug') }}</td>
 		<td>{{ trans('crudpages::page.title') }}</td>
 		<td>{{ trans('crudpages::page.description') }}</td>
-		<td>{{ trans('crudpages::page.active') }}</td>
+		<td class="text-center">{{ trans('crudpages::page.active') }}</td>
 		<td class="text-center" colspan="2">{{ trans('crudpages::page.actions') }}</td>
 	</thead>
 	@if ($pages->isNotEmpty())
@@ -19,7 +19,7 @@
 				<td>{{ $page->slug }}</td>
 				<td>{{ $page->title }}</td>
 				<td>{{ $page->description }}</td>
-				<td>
+				<td class="text-center">
 					<a href="{{ route('admin.crudpages.toggle', ['id' => $page->id]) }}">
 						@if ($page->active)
 							<x-iconcomponents::check-circle color="green" />

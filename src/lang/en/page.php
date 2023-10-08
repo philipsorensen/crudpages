@@ -4,9 +4,11 @@ return [
 	'actions' => 'Actions',
 	'active' => 'Active',
 	'create' => 'Create page',
+	'created' => 'Page created',
 	'createanewpage' => 'Create a new page',
 	'delete' => 'Delete page',
-	'deleteaffirmation' => 'Are you sure you want to delete the page titled &ldquo; :name &rdquo;?',
+	'deleted' => 'Page deleted',
+	'deleteaffirmation' => 'Are you sure you want to delete the page titled " :name "?',
 	'description' => 'Description',
 	'edit' => 'Edit page',
 	'nopagesyet' => 'No pages yet',
@@ -15,4 +17,5 @@ return [
 	'text' => 'Text',
 	'title' => 'Title',
 	'update' => 'Update page',
+	'updated' => 'Page updated',
 ];
