@@ -29,7 +29,7 @@
 					</a>
 				</td>
 				<td class="text-center">
-					<a class="me-4" href="{{ route('crudpages.edit', ['id' => $page->id]) }}" title="{{ trans('admin.crudpages::page.edit') }}">
+					<a class="me-4" href="{{ route('admin.crudpages.edit', ['id' => $page->id]) }}" title="{{ trans('admin.crudpages::page.edit') }}">
 						<x-iconcomponents::pencil-square />
 					</a>
 				</td>
