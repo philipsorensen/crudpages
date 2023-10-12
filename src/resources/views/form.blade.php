@@ -1,6 +1,7 @@
 <form action="@if (isset($page)) {{ route('admin.crudpages.edit', ['id' => $page->id]) }} @else {{ route('admin.crudpages.create') }} @endif" method="post">
 	@csrf
 
+	<div id="gjs"></div>
 	<div class="row">
 		<x-formcomponents::input col="col-sm-6" id="slug" inputmode="url" :name="trans('crudpages::page.slug')" :value="old('slug', isset($page) ? $page->slug : '')" />
 		<x-formcomponents::input col="col-sm-6" id="title" :name="trans('crudpages::page.title')" :value="old('title', isset($page) ? $page->title : '')" />

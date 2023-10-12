@@ -69,6 +69,7 @@ class AdminCrudPageController extends Controller
 
 	public function update(int $id, Request $request)
     {
+		dd($request);
         $page = CrudPage::findOrFail($id);
         $validated = $request->validate([
             'slug' => [
