@@ -7,7 +7,7 @@ use PhilipSorensen\CrudPages\Models\CrudPage;
 
 class CrudPageController extends Controller
 {
-	public function show(string $slug)
+	public static function show(string $slug)
 	{
 		$page = auth()->user() ? CrudPage::where('slug', $slug)->firstOrFail() : CrudPage::where('slug', $slug)->where('active', true)->firstOrFail();
 		return view('crudpages::show')->with('page', $page);
