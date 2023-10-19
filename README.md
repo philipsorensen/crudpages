@@ -30,4 +30,27 @@ PhilipSorensen\CrudPages\Providers\CrudPagesProvider::class
 
 ## Usage
 
-> ???
+Add something like this to your `routes/web.php`:
+```
+<?php
+use PhilipSorensen\CrudPages\Controllers\AdminCrudPageController;
+use PhilipSorensen\CrudPages\Controllers\CrudPageController;
+
+Route::controller(AdminPageController::class)->middleware('can:page crud')->name('admin.crudpages.')->prefix('pages')->group(function () {
+	Route::get('', 'index')->name('index');
+	Route::get('create', 'create')->name('create');
+	Route::post('create', 'store');
+	Route::get('{id}/delete', 'delete')->name('delete');
+	Route::get('{id}/edit', 'edit')->name('edit');
+	Route::post('{id}/edit', 'update');
+	Route::get('{id}/toggle', 'toggleActive')->name('toggle');
+});
+
+Route::controller(CrudPageController::class)->group(function () {
+	Route::get('{slug}', 'show')->name('page.show');
+	Route::get('{slug1}/{slug2}', 'show2');
+	Route::get('{slug1}/{slug2}/{slug3}', 'show3');
+});
+```
+
+Both `AdminCrudPageController` and `CrudPageController` can be extended with custom controllers. 
