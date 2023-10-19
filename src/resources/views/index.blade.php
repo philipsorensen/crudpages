@@ -16,7 +16,9 @@
 	@if ($pages->isNotEmpty())
 		@foreach ($pages as $page)
 			<tr>
-				<td>{{ $page->slug }}</td>
+				<td>
+					<a href="{{ route('page.show', ['slug' => $page->slug]) }}" target="_blank">{{ $page->slug }}</a>
+				</td>
 				<td>{{ $page->title }}</td>
 				<td>{{ $page->description }}</td>
 				<td class="text-center">
