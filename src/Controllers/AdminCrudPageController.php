@@ -9,9 +9,13 @@ use PhilipSorensen\CrudPages\Models\CrudPage;
 
 class AdminCrudPageController extends Controller
 {
+	protected array $breadcrumbs = [];
+
     public function create()
     {
-        return view('crudpages::create');
+		$this->breadcrumbs[] = [trans('crudpages::page.pages'), route('admin.crudpages.index')];
+        return view('crudpages::create')
+				->with('breadcrumbs', $this->breadcrumbs);
     }
 
     public function delete(int $id)
@@ -25,8 +29,10 @@ class AdminCrudPageController extends Controller
 
     public function edit(int $id)
     {
+        $this->breadcrumbs[] = [trans('crudpages::page.pages'), route('admin.crudpages.index')];
         $page = CrudPage::findOrFail($id);
         return view('crudpages::edit')
+				->with('breadcrumbs', $this->breadcrumbs)
                 ->with('page', $page);
     }
 
@@ -34,6 +40,7 @@ class AdminCrudPageController extends Controller
     {
         $pages = CrudPage::orderBy('slug')->get();
         return view('crudpages::index')
+				->with('breadcrumbs', $this->breadcrumbs)
                 ->with('pages', $pages);
     }
 

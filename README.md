@@ -36,7 +36,7 @@ Add something like this to your `routes/web.php`:
 use PhilipSorensen\CrudPages\Controllers\AdminCrudPageController;
 use PhilipSorensen\CrudPages\Controllers\CrudPageController;
 
-Route::controller(AdminPageController::class)->middleware('can:page crud')->name('admin.crudpages.')->prefix('pages')->group(function () {
+Route::controller(AdminCrudPageController::class)->middleware('can:page crud')->name('admin.crudpages.')->prefix('pages')->group(function () {
 	Route::get('', 'index')->name('index');
 	Route::get('create', 'create')->name('create');
 	Route::post('create', 'store');
