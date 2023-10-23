@@ -6,11 +6,15 @@
 @section('scripts')
 <script src="{{ asset('summernote/summernote.min.js') }}"></script>
 <script>
+function summernoteSubmit()
+{
+	$('#text').val($('#text').summernote('code'));
+}
+
 $(document).ready(function() {
 	$('#text').summernote({
 		minHeight: 250,
 	});
-	$('.dropdown-toggle').dropdown();
 });
 </script>
 @append
