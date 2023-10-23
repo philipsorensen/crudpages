@@ -14,7 +14,7 @@
 		
 		<x-formcomponents::text id="text" :name="trans('crudpages::page.text')" rows="12" :value="old('text', isset($page) ? $page->text : '')" />
 
-		<x-formcomponents::button>
+		<x-formcomponents::button onclick="summernoteSubmit();">
 			@if (isset($page))
 				{{ trans('crudpages::page.update') }}
 			@else
