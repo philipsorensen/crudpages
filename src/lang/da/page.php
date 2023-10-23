@@ -11,6 +11,8 @@ return [
 	'deleteaffirmation' => 'Er du sikker på, du vil slette siden med titlen " :name "?',
 	'description' => 'Beskrivelse',
 	'edit' => 'Rediger side',
+	'image' => 'Billede',
+	'image.label' => 'Vælg billede (hvis du vil erstatte)',
 	'nopagesyet' => 'Ingen sider endnu',
 	'pages' => 'Sider',
 	'slug' => 'Slug',

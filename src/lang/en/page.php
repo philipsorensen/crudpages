@@ -11,6 +11,8 @@ return [
 	'deleteaffirmation' => 'Are you sure you want to delete the page titled " :name "?',
 	'description' => 'Description',
 	'edit' => 'Edit page',
+	'image' => 'Image',
+	'image.label' => 'Select image (if you want to replace)',
 	'nopagesyet' => 'No pages yet',
 	'pages' => 'Pages',
 	'slug' => 'Slug',

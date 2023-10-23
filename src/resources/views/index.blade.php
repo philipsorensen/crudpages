@@ -9,6 +9,7 @@
 	<thead>
 		<td>{{ trans('crudpages::page.slug') }}</td>
 		<td>{{ trans('crudpages::page.title') }}</td>
+		<td>{{ trans('crudpages::page.image') }}</td>
 		<td>{{ trans('crudpages::page.description') }}</td>
 		<td class="text-center">{{ trans('crudpages::page.active') }}</td>
 		<td class="text-center" colspan="2">{{ trans('crudpages::page.actions') }}</td>
@@ -20,6 +21,13 @@
 					<a href="{{ route('page.show', ['slug' => $page->slug]) }}" target="_blank">{{ $page->slug }}</a>
 				</td>
 				<td>{{ $page->title }}</td>
+				<td>
+					@if ($page->ogimage)
+						<a href="{{ $page->getOGImage() }}" target="_blank">
+							<img class="img-fluid rounded-4" src="{{ $page->getOGImage() }}">
+						</a>
+					@endif
+				</td>
 				<td>{{ $page->description }}</td>
 				<td class="text-center">
 					<a href="{{ route('admin.crudpages.toggle', ['id' => $page->id]) }}">

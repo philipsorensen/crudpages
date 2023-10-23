@@ -4,6 +4,9 @@ namespace PhilipSorensen\CrudPages\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use PhilipSorensen\CrudPages\Models\CrudPage;
 
@@ -21,6 +24,10 @@ class AdminCrudPageController extends Controller
     public function delete(int $id)
     {
         $page = CrudPage::findOrFail($id);
+		if ($page->ogimage !== null)
+		{
+			Storage::delete('ogimages/' . $page->ogimage);
+		}
         $page->delete();
 
         session()->flash('success', trans('crudpages::page.deleted') .'.');
@@ -53,12 +60,24 @@ class AdminCrudPageController extends Controller
             'text' => 'string',
 		], []);
 
-        CrudPage::create([
-            'slug' => $validated['slug'],
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'text' => $validated['text'],
-        ]);
+		DB::transaction(function () use ($validated, $request) {
+			$page = CrudPage::create([
+				'slug' => $validated['slug'],
+				'title' => $validated['title'],
+				'description' => $validated['description'],
+				'text' => $validated['text'],
+			]);
+
+			if ($request->image !== null)
+			{
+				$path = "ogimages";
+				$filename = Str::uuid() . '.' . $request->image->getClientOriginalExtension();
+				$request->image->storeAs($path, $filename);
+
+				$page->ogimage = $filename;
+				$page->save();
+			}
+		});
 
         session()->flash('success', trans('crudpages::page.created') . '.');
         return redirect()->route('admin.crudpages.index');
@@ -95,6 +114,21 @@ class AdminCrudPageController extends Controller
         $page->description = $validated['description'];
         $page->text = $validated['text'];
         $page->save();
+
+		if ($request->image !== null)
+		{
+			if ($page->ogimage !== null)
+			{
+				Storage::delete('ogimages/' . $page->ogimage);
+			}
+
+			$path = "ogimages";
+			$filename = Str::uuid() . '.' . $request->image->getClientOriginalExtension();
+			$request->image->storeAs($path, $filename);
+
+			$page->ogimage = $filename;
+			$page->save();
+		}
 
         session()->flash('success', trans('crudpages::page.updated') . '.');
         return redirect()->route('admin.crudpages.index');
