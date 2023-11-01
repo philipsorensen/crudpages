@@ -2,6 +2,7 @@
 
 namespace PhilipSorensen\CrudPages\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,5 +24,10 @@ class CrudPage extends Model
 	public function getText()
 	{
 		return $this->text;
+	}
+
+	public function scopeActive(Builder $query): void
+	{
+		$query->where('active', true);
 	}
 }
