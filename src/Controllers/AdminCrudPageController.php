@@ -12,12 +12,14 @@ use PhilipSorensen\CrudPages\Models\CrudPage;
 
 class AdminCrudPageController extends Controller
 {
+	protected string $baseroute = 'admin.crudpages.';
 	protected array $breadcrumbs = [];
 
     public function create()
     {
-		$this->breadcrumbs[] = [trans('crudpages::page.pages'), route('admin.crudpages.index')];
+		$this->breadcrumbs[] = [trans('crudpages::page.pages'), route($this->baseroute . 'index')];
         return view('crudpages::create')
+				->with('baseroute', $this->baseroute)
 				->with('breadcrumbs', $this->breadcrumbs);
     }
 
@@ -31,14 +33,15 @@ class AdminCrudPageController extends Controller
         $page->delete();
 
         session()->flash('success', trans('crudpages::page.deleted') .'.');
-        return redirect()->route('admin.crudpages.index');
+        return redirect()->route($this->baseroute . 'index');
     }
 
     public function edit(int $id)
     {
-        $this->breadcrumbs[] = [trans('crudpages::page.pages'), route('admin.crudpages.index')];
+        $this->breadcrumbs[] = [trans('crudpages::page.pages'), route($this->baseroute . 'index')];
         $page = CrudPage::findOrFail($id);
         return view('crudpages::edit')
+				->with('baseroute', $this->baseroute)
 				->with('breadcrumbs', $this->breadcrumbs)
                 ->with('page', $page);
     }
@@ -47,6 +50,7 @@ class AdminCrudPageController extends Controller
     {
         $pages = CrudPage::orderBy('slug')->get();
         return view('crudpages::index')
+				->with('baseroute', $this->baseroute)
 				->with('breadcrumbs', $this->breadcrumbs)
                 ->with('pages', $pages);
     }
@@ -80,7 +84,7 @@ class AdminCrudPageController extends Controller
 		});
 
         session()->flash('success', trans('crudpages::page.created') . '.');
-        return redirect()->route('admin.crudpages.index');
+        return redirect()->route($this->baseroute . 'index');
     }
 
     public function toggleActive(int $id)
@@ -90,7 +94,7 @@ class AdminCrudPageController extends Controller
         $page->save();
 
         session()->flash('success', trans('crudpages::page.updated') . '.');
-        return redirect()->route('admin.crudpages.index');
+        return redirect()->route($this->baseroute . 'index');
     }
 
 	public function update(int $id, Request $request)
@@ -131,6 +135,6 @@ class AdminCrudPageController extends Controller
 		}
 
         session()->flash('success', trans('crudpages::page.updated') . '.');
-        return redirect()->route('admin.crudpages.index');
+        return redirect()->route($this->baseroute . 'index');
     }
 }
