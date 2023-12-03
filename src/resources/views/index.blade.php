@@ -38,7 +38,7 @@
 					@if ($page->active)
 						<x-bootstrapicons::check-circle color="green" />
 					@else
-						<x-iconcbootstrapiconsomponents::x-circle color="red" />
+						<x-bootstrapicons::x-circle color="red" />
 					@endif 
 				</a>
 			</td>
