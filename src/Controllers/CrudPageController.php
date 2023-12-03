@@ -9,7 +9,7 @@ class CrudPageController extends Controller
 {
 	public function show(string $slug)
 	{
-		$page = auth()->user() ? CrudPage::where('slug', $slug)->firstOrFail() : CrudPage::where('slug', $slug)->where('active', true)->firstOrFail();
+		$page = auth()->user() ? CrudPage::where('slug', $slug)->firstOrFail() : CrudPage::where('slug', $slug)->active()->firstOrFail();
 		return view('crudpages::show')->with('page', $page);
 	}
 
