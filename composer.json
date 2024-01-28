@@ -18,5 +18,12 @@
     "require": {
 		"philipsorensen/bootstrapicons": "^1.1",
 		"philipsorensen/formcomponents": "^1.0.18"
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"PhilipSorensen\\CrudPages\\Providers\\CrudPagesProvider"
+			]
+		}
 	}
 }

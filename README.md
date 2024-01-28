@@ -19,13 +19,6 @@ The package assumes you have a layout-file `layout.app` that can be extended. In
 ## Installation
 
 > composer require philipsorensen/crudpages
-
-Add the following in your `config/app.php` under providers. 
-
-```
-PhilipSorensen\CrudPages\Providers\CrudPagesProvider::class
-```
-
 > php artisan vendor:publish --tag=crudpages-assets
 
 ## Usage
