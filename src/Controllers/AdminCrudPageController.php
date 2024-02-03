@@ -84,7 +84,7 @@ class AdminCrudPageController extends Controller
 		});
 
         session()->flash('success', trans('crudpages::page.created') . '.');
-        return redirect()->route($this->baseroute . 'index');
+        return redirect()->route($this->baseroute . 'edit', ['id' => $page->id]);
     }
 
     public function toggleActive(int $id)
@@ -135,6 +135,6 @@ class AdminCrudPageController extends Controller
 		}
 
         session()->flash('success', trans('crudpages::page.updated') . '.');
-        return redirect()->route($this->baseroute . 'index');
+        return redirect()->route($this->baseroute . 'edit', ['id' => $page->id]);
     }
 }

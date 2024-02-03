@@ -3,6 +3,7 @@
 
 @section('content')
 <h1>{{ trans('crudpages::page.edit') }}</h1>
+@include('crudpages::components.status')
 @include('crudpages::form')
 
 @include('crudpages::components.summernote')
