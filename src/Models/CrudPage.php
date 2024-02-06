@@ -4,7 +4,6 @@ namespace PhilipSorensen\CrudPages\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class CrudPage extends Model
 {
@@ -15,9 +14,7 @@ class CrudPage extends Model
 	{
 		if ($this->ogimage !== null)
 		{
-			$arr = explode('.', $this->ogimage);
-			$fileext = end($arr);
-			return 'data:image/' . $fileext . ';base64,' . base64_encode(Storage::get("ogimages/" . $this->ogimage));
+			return route('storageimage.show', ['path' => 'ogimages/' . $this->ogimage]);
 		}
 	}
 

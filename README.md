@@ -44,6 +44,10 @@ Route::controller(CrudPageController::class)->group(function () {
 	Route::get('{slug1}/{slug2}', 'show2');
 	Route::get('{slug1}/{slug2}/{slug3}', 'show3');
 });
+
+Route::controller(StorageImageController::class)->name('storageimage.')->prefix('images')->group(function () {
+	Route::get('{path}', 'show')->name('show')->where('path', '.*');
+});
 ```
 
 Both `AdminCrudPageController` and `CrudPageController` can be extended with custom controllers. 
