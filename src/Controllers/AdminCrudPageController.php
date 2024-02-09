@@ -59,8 +59,8 @@ class AdminCrudPageController extends Controller
     {
 		$validated = $request->validate([
 			'slug' => ['string', 'nullable', 'unique:crud_pages'],
-            'title' => ['nullable', 'string'],
-            'description' => ['string', 'nullable'],
+            'title' => ['max:70', 'nullable', 'string'],
+            'description' => ['max:170', 'nullable', 'string'],
             'text' => 'string',
 		], []);
 
@@ -106,8 +106,8 @@ class AdminCrudPageController extends Controller
                 'nullable',
                 Rule::unique('crud_pages')->ignore($page->id)
             ],
-            'title' => ['nullable', 'string'],
-            'description' => 'string|nullable',
+            'title' => ['max:70', 'nullable', 'string'],
+            'description' => ['max:170', 'nullable', 'string'],
             'text' => 'string',
         ], [
             // Messages.
