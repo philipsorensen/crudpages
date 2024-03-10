@@ -28,6 +28,7 @@ Add something like this to your `routes/web.php`:
 <?php
 use PhilipSorensen\CrudPages\Controllers\AdminCrudPageController;
 use PhilipSorensen\CrudPages\Controllers\CrudPageController;
+use PhilipSorensen\CrudPages\Controllers\StorageImageController;
 
 Route::controller(AdminCrudPageController::class)->middleware('can:page crud')->name('admin.crudpages.')->prefix('pages')->group(function () {
 	Route::get('', 'index')->name('index');
