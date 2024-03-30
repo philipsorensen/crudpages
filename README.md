@@ -40,11 +40,7 @@ Route::controller(AdminCrudPageController::class)->middleware('can:page crud')->
 	Route::get('{id}/toggle', 'toggleActive')->name('toggle');
 });
 
-Route::controller(CrudPageController::class)->group(function () {
-	Route::get('{slug}', 'show')->name('page.show');
-	Route::get('{slug1}/{slug2}', 'show2');
-	Route::get('{slug1}/{slug2}/{slug3}', 'show3');
-});
+Route::get('{slug}', [CrudPageController::class, 'show'])->name('page.show')->where('slug', '.*');
 
 Route::controller(StorageImageController::class)->name('storageimage.')->prefix('images')->group(function () {
 	Route::get('{path}', 'show')->name('show')->where('path', '.*');
