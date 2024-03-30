@@ -58,7 +58,7 @@ class AdminCrudPageController extends Controller
 	public function store(Request $request)
     {
 		$validated = $request->validate([
-			'slug' => ['string', 'nullable', 'unique:crud_pages'],
+			'slug' => ['string', 'unique:crud_pages'],
             'title' => ['max:70', 'nullable', 'string'],
             'description' => ['max:170', 'nullable', 'string'],
             'text' => 'string',
@@ -103,7 +103,6 @@ class AdminCrudPageController extends Controller
         $validated = $request->validate([
             'slug' => [
                 'string',
-                'nullable',
                 Rule::unique('crud_pages')->ignore($page->id)
             ],
             'title' => ['max:70', 'nullable', 'string'],
