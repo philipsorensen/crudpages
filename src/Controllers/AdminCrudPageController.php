@@ -60,13 +60,13 @@ class AdminCrudPageController extends Controller
 		$validated = $request->validate([
 			'slug' => ['string', 'unique:crud_pages'],
             'title' => ['max:70', 'nullable', 'string'],
-            'description' => ['max:170', 'nullable', 'string'],
+            'description' => ['max:160', 'nullable', 'string'],
             'text' => 'string',
 		], []);
 
 		DB::transaction(function () use ($validated, $request) {
 			$page = CrudPage::create([
-				'slug' => $validated['slug'],
+				'slug' => Str::slug($validated['slug']),
 				'title' => $validated['title'],
 				'description' => $validated['description'],
 				'text' => $validated['text'],
