@@ -106,13 +106,13 @@ class AdminCrudPageController extends Controller
                 Rule::unique('crud_pages')->ignore($page->id)
             ],
             'title' => ['max:70', 'nullable', 'string'],
-            'description' => ['max:170', 'nullable', 'string'],
+            'description' => ['max:160', 'nullable', 'string'],
             'text' => 'string',
         ], [
             // Messages.
         ]);
 
-        $page->slug = $validated['slug'];
+        $page->slug = Str::slug($validated['slug']);
         $page->title = $validated['title'];
         $page->description = $validated['description'];
         $page->text = $validated['text'];
